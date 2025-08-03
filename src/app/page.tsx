@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/navbar"
+import Navbar from "@/components/navbar"
 import { AboutSection } from "@/components/about-section"
 import { EducationSection } from "@/components/education-section"
 import { ExperienceSection } from "@/components/experience-section"
@@ -15,9 +15,9 @@ export default function Home() {
       <main className="container mx-auto px-4 py-8 pb-24">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
-          <section className="text-center py-16">
+          <section className="text-center py-3">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-              John Doe
+              Hey there, I'm Yaksh Patel!
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8">
               Full Stack Developer & Problem Solver
