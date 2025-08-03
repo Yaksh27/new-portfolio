@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar"
 import { AboutSection } from "@/components/about-section"
 import { EducationSection } from "@/components/education-section"
+import { ExperienceSection } from "@/components/experience-section"
 import { SkillsSection } from "@/components/skills-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { LeetCodeProfile } from "@/components/leetcode-profile"
@@ -11,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navbar />
       
-      <main className="container mx-auto px-4 py-8 pt-24">
+      <main className="container mx-auto px-4 py-8 pb-24">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
           <section className="text-center py-16">
@@ -35,6 +36,11 @@ export default function Home() {
           {/* Education Section */}
           <section id="education">
             <EducationSection />
+          </section>
+
+          {/* Experience Section */}
+          <section id="experience">
+            <ExperienceSection />
           </section>
 
           {/* Skills Section */}
