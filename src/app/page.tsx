@@ -74,10 +74,10 @@ export default function Home() {
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">
                   Hey there, I'm <br />
-                  <span className="text-amber-900 dark:text-amber-700 mt-2">Yaksh Patel</span>
+                  <span className="text-amber-900 dark:text-amber-700 mt-4">Yaksh Patel</span>
                 </h1>
-                                 <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 h-8">
-                   <span className="text-amber-900 dark:text-amber-700 font-medium">
+                                 <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 mt-6 h-8">
+                   <span className="text-gray-600 dark:text-amber-700 font-medium">
                      {isClient ? currentText : "Full Stack Developer"}
                      {isClient && (
                        <motion.span
@@ -110,7 +110,7 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-base text-gray-900 dark:text-gray-500">
+            <p className="text-base text-gray-700 dark:text-gray-500">
               crafting digital experiences with precision and purpose.
             </p>
           </section>
