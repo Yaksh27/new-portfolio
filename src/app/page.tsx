@@ -74,7 +74,7 @@ export default function Home() {
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
                   Hey there, I'm <br />
-                  <span className="text-amber-700 dark:text-amber-400 mt-4">Yaksh Patel</span>
+                  <span className="text-amber-900 dark:text-[#a39077] mt-4">Yaksh Patel.</span>
                 </h1>
                                  <div className="text-xl md:text-2xl text-black dark:text-white mb-3 mt-6 h-8">
                    <span className="text-black dark:text-white font-medium">
@@ -94,9 +94,9 @@ export default function Home() {
                                                    <div className="relative">
                     <div className="absolute -inset-1 bg-black dark:bg-white rounded-full opacity-20 blur-sm" />
                     <Avatar className="h-24 w-24 border border-gray-200 dark:border-gray-700 relative">
-                      <AvatarImage src="/placeholder.svg?height=72&width=72" alt="Profile" />
+                      <AvatarImage src="/redshirtpic.jpeg" alt="" />
                       <AvatarFallback className="text-sm bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
-                        YP
+                   
                       </AvatarFallback>
                     </Avatar>
                   </div>
@@ -108,10 +108,12 @@ export default function Home() {
                    Resume
                  </Button>
               </div>
+
+
             </div>
 
-            <p className="text-base text-black dark:text-white">
-              crafting digital experiences with precision and purpose.
+            <p className="text-base text-gray-600 dark:text-gray-300">
+            ❝ crafting digital experiences with precision and purpose. ❞
             </p>
           </section>
 
@@ -152,7 +154,7 @@ export default function Home() {
       <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700 py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
           <p className="text-black dark:text-white">
-            © 2024 Yaksh Patel. Built with Next.js 15, Tailwind CSS, and shadcn/ui.
+            © 2025 Yaksh Patel. Built with Next.js 15, Tailwind CSS, and shadcn/ui.
           </p>
         </div>
       </footer>
