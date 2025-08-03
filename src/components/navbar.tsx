@@ -43,7 +43,7 @@ export default function Navbar() {
   if (!mounted) {
     return (
       <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-full shadow-xl border border-gray-200/50 dark:border-gray-700/50 px-6 py-3">
+        <div className="bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-full shadow-xl border border-gray-200/50 dark:border-gray-700/50 px-6 py-3">
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
             <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-full shadow-xl border border-gray-200/50 dark:border-gray-700/50 px-6 py-3">
+      <div className="bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-full shadow-xl border border-gray-200/50 dark:border-gray-700/50 px-6 py-3">
         <div className="flex items-center space-x-4">
           {/* Main Navigation Items */}
           {navItems.map((item) => (
@@ -64,7 +64,7 @@ export default function Navbar() {
               key={item.id}
               variant="ghost"
               size="sm"
-              className="rounded-full h-10 w-10 p-0 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-105 transition-all duration-200"
+              className="rounded-full h-10 w-10 p-0 hover:bg-gray-200 dark:hover:bg-gray-800 hover:scale-105 transition-all duration-200 text-black dark:text-white"
               title={item.label}
             >
               <item.icon className="h-5 w-5" />
@@ -78,7 +78,7 @@ export default function Navbar() {
           <Button
             variant="ghost"
             size="sm"
-            className="rounded-full h-10 w-10 p-0 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-105 transition-all duration-200"
+            className="rounded-full h-10 w-10 p-0 hover:bg-gray-200 dark:hover:bg-gray-800 hover:scale-105 transition-all duration-200 text-black dark:text-white"
             onClick={toggleTheme}
             title={themeItem.label}
           >
