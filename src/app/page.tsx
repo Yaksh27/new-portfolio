@@ -16,7 +16,7 @@ import { GitHubContributions } from "@/components/github-contributions"
 
 export default function Home() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [currentText, setCurrentText] = useState("Full Stack Developer")
+  const [currentText, setCurrentText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [isClient, setIsClient] = useState(false)
@@ -25,6 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsClient(true)
+    setCurrentText("Full Stack Developer")
   }, [])
 
   useEffect(() => {
@@ -75,34 +76,34 @@ export default function Home() {
                   Hey there, I'm <br />
                   <span className="text-amber-900 dark:text-amber-700 mt-2">Yaksh Patel</span>
                 </h1>
-                <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 h-8">
-                  <span className="text-amber-900 dark:text-amber-700 font-medium">
-                    {currentText}
-                    {isClient && (
-                      <motion.span
-                        animate={{ opacity: [1, 0] }}
-                        transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-                        className="inline-block w-0.5 h-6 bg-current ml-1"
-                      />
-                    )}
-                  </span>
-                </div>
+                                 <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 h-8">
+                   <span className="text-amber-900 dark:text-amber-700 font-medium">
+                     {isClient ? currentText : "Full Stack Developer"}
+                     {isClient && (
+                       <motion.span
+                         animate={{ opacity: [1, 0] }}
+                         transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+                         className="inline-block w-0.5 h-6 bg-current ml-1"
+                       />
+                     )}
+                   </span>
+                 </div>
               </div>
 
               <div className="flex flex-col items-center space-y-2 ml-6">
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-amber-900 rounded-full opacity-20 blur-sm" />
-                  <Avatar className="h-24 w-24 border border-gray-200 dark:border-gray-700 relative">
-                    <AvatarImage src="/placeholder.svg?height=72&width=72" alt="Profile" />
-                    <AvatarFallback className="text-sm bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
-                      YP
-                    </AvatarFallback>
-                  </Avatar>
-                </div>
-                <Button
-                  size="lg"
-                  className="bg-amber-900 hover:bg-amber-800 text-white border-0 text-xs font-medium px-4 h-7 mt-3"
-                >
+                                 <div className="relative">
+                   <div className="absolute -inset-1 bg-amber-900 rounded-full opacity-20 blur-sm" />
+                   <Avatar className="h-24 w-24 border border-gray-200 dark:border-gray-700 relative">
+                     <AvatarImage src="/placeholder.svg?height=72&width=72" alt="Profile" />
+                     <AvatarFallback className="text-sm bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
+                       YP
+                     </AvatarFallback>
+                   </Avatar>
+                 </div>
+                 <Button
+                   size="lg"
+                   className="bg-amber-900 hover:bg-amber-800 text-white border-0 text-xs font-medium px-4 h-7 mt-3"
+                 >
                   <Download className="h-5 w-5 mr-1" />
                   Resume
                 </Button>

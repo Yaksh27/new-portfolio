@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Github, Calendar, GitCommit } from "lucide-react"
 
@@ -12,14 +13,18 @@ interface Contribution {
 }
 
 const mockContributions: Contribution[] = [
-  // Generate mock data for the last 365 days
+  // Generate deterministic mock data for the last 365 days
   ...Array.from({ length: 365 }, (_, i) => {
     const date = new Date()
     date.setDate(date.getDate() - (364 - i))
+    // Use a deterministic seed based on the date to ensure consistent values
+    const seed = date.getTime()
+    const count = (seed % 10) + 1
+    const level = ((seed % 5) + 1) as 0 | 1 | 2 | 3 | 4
     return {
       date: date.toISOString().split('T')[0],
-      count: Math.floor(Math.random() * 10),
-      level: Math.floor(Math.random() * 5) as 0 | 1 | 2 | 3 | 4
+      count,
+      level
     }
   })
 ]
@@ -36,9 +41,40 @@ const getContributionColor = (level: number) => {
 }
 
 export function GitHubContributions() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const totalContributions = mockContributions.reduce((sum, contribution) => sum + contribution.count, 0)
   const activeDays = mockContributions.filter(c => c.count > 0).length
   const currentStreak = 7 // Mock current streak
+
+  if (!mounted) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Github className="h-5 w-5" />
+            GitHub Contributions
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  Loading...
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Total Contributions</div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
     <Card>
@@ -52,24 +88,24 @@ export function GitHubContributions() {
         <div className="space-y-6">
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                {totalContributions}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Total Contributions</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {activeDays}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Active Days</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                {currentStreak}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Current Streak</div>
-            </div>
+                         <div className="text-center">
+               <div className="text-2xl font-bold text-amber-900 dark:text-amber-700">
+                 {totalContributions}
+               </div>
+               <div className="text-sm text-gray-600 dark:text-gray-400">Total Contributions</div>
+             </div>
+             <div className="text-center">
+               <div className="text-2xl font-bold text-amber-900 dark:text-amber-700">
+                 {activeDays}
+               </div>
+               <div className="text-sm text-gray-600 dark:text-gray-400">Active Days</div>
+             </div>
+             <div className="text-center">
+               <div className="text-2xl font-bold text-amber-900 dark:text-amber-700">
+                 {currentStreak}
+               </div>
+               <div className="text-sm text-gray-600 dark:text-gray-400">Current Streak</div>
+             </div>
           </div>
 
           {/* Contribution Calendar */}
