@@ -18,8 +18,8 @@ export function AboutSection() {
             <span className="text-black dark:text-white text-sm">About Me</span>
           </Badge>
         </div>
-        <p className="text-black dark:text-white text-base leading-relaxed">
-          I'm a passionate software developer with expertise in modern web technologies. I love building scalable applications and solving complex problems. With a strong foundation in both frontend and backend development, I create seamless user experiences and robust server-side solutions. My approach combines technical excellence with creative problem-solving, ensuring that every project I work on delivers both functionality and elegance.
+        <p className="text-gray-700 dark:text-white text-base leading-relaxed">
+          I'm a passionate software developer with expertise in modern web technologies. I love building scalable applications and solving complex problems. With a strong foundation in both frontend and backend development, I aim to create seamless user experiences and robust server-side solutions. My approach combines technical excellence with creative problem-solving, ensuring that every project I work on delivers both functionality and elegance.
         </p>
       </div>
     </motion.div>
