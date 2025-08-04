@@ -143,9 +143,10 @@ export default function Home() {
           </section>
 
           {/* LeetCode & GitHub Section */}
-          <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <LeetCodeProfile />
+          <section>
             <GitHubContributions />
+            <LeetCodeProfile />
+            
           </section>
         </div>
       </main>

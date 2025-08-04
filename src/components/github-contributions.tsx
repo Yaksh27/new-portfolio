@@ -15,7 +15,7 @@ interface Contribution {
 const mockContributions: Contribution[] = [
   // Generate deterministic mock data for the last 365 days
   ...Array.from({ length: 365 }, (_, i) => {
-    const date = new Date()
+    const date = new Date() 
     date.setDate(date.getDate() - (364 - i))
     // Use a deterministic seed based on the date to ensure consistent values
     const seed = date.getTime()

@@ -67,13 +67,13 @@ export function ProjectsSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="py-8"
+      className="py-3"
     >
       <div className="max-w-6xl">
         {/* Projects Badge */}
         <div className="flex items-center justify-start mb-6">
-          <Badge variant="outline" className="text-black dark:text-white">
-            <span className="text-black dark:text-white text-sm">My Projects</span>
+          <Badge variant="default" className="text-white dark:text-black">
+            <span className="text-white dark:text-black text-sm">My Projects</span>
           </Badge>
         </div>
         
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                   {/* Action Buttons */}
                   <div className="flex gap-3">
                     {project.githubUrl && (
-                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-600 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900">
+                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
                           Code
@@ -146,7 +146,7 @@ export function ProjectsSection() {
                       </Button>
                     )}
                     {project.liveUrl && (
-                      <Button size="sm" asChild className="bg-blue-400 hover:bg-blue-500 text-white dark:bg-blue-500 dark:hover:bg-blue-600">
+                      <Button size="sm" asChild className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600">
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           <Globe className="h-4 w-4 mr-2" />
                           Live
