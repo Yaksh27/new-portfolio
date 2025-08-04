@@ -9,11 +9,11 @@ export function AboutSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="py-8"
+      className="py-3"
     >
       <div className="max-w-3xl">
         {/* about badge slightly bigger */}
-        <div className="flex items-center justify-start mb-3 p">
+        <div className="flex items-center justify-start mb-3 ">
           <Badge variant="outline" className="text-black dark:text-white">
             <span className="text-black dark:text-white text-sm">About Me</span>
           </Badge>

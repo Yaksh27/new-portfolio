@@ -79,7 +79,7 @@ export function ExperienceSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="py-8"
+      className="py-3"
     >
       <div className="max-w-3xl">
         {/* Experience Badge */}
