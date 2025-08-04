@@ -1,8 +1,11 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import type React from "react"
+
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, Award, Calendar, MapPin, ArrowRight, Star } from "lucide-react"
+import { motion } from "framer-motion"
+import { ChevronRight, MapPin } from "lucide-react"
+import { useState } from "react"
 
 interface Experience {
   id: number
@@ -12,180 +15,173 @@ interface Experience {
   period: string
   description: string
   technologies: string[]
-  achievements: string[]
   type: "full-time" | "contract" | "internship"
-  highlights: string[]
+  logo: string
+  link?: string
 }
 
 const experienceData: Experience[] = [
   {
     id: 1,
-    title: "Senior Full Stack Developer",
-    company: "TechCorp Inc.",
-    location: "San Francisco, CA",
-    period: "2022 - Present",
-    description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
-    technologies: ["React", "TypeScript", "Node.js", "AWS", "PostgreSQL", "Docker"],
-    achievements: [
-      "Led team of 5 developers on major product launch",
-      "Improved application performance by 40%",
-      "Implemented CI/CD pipeline reducing deployment time by 60%",
-      "Mentored 3 junior developers"
-    ],
-    type: "full-time",
-    highlights: ["Team Leadership", "Performance Optimization", "DevOps", "Mentoring"]
+    title: "Front-End Developer Intern",
+    company: "Deckoviz Space Labs",
+    location: "London, UK (Remote) ",
+    period: "June 2025 - July 2025",
+    description:
+      "Converted Figma UI/UX mockups into a pixel-perfect, responsive React application. Implemented lazy loading, image compression, and icon optimization to boost performance by 40%",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "PostgreSQL"],
+    type: "internship",
+    logo: "/deckovizlogo.png",
+    link: "https://deckoviz.com",
   },
   {
     id: 2,
-    title: "Full Stack Developer",
-    company: "StartupXYZ",
-    location: "Remote",
-    period: "2020 - 2022",
-    description: "Built and maintained multiple web applications from concept to deployment. Collaborated with cross-functional teams to deliver high-quality products.",
-    technologies: ["React", "JavaScript", "Python", "Django", "MongoDB", "Heroku"],
-    achievements: [
-      "Developed 3 client applications from scratch",
-      "Reduced bug reports by 50% through improved testing",
-      "Optimized database queries improving load times by 35%",
-      "Implemented user authentication system"
-    ],
-    type: "full-time",
-    highlights: ["Full-Stack Development", "Testing", "Database Optimization", "Authentication"]
+    title: "Full Stack Developer Intern",
+    company: "Speaking Warrior",
+    location: "Ahmedabad, India",
+    period: "April 2025 - June 2025",
+    description:
+      "Founding developer, built and launched a full-stack learning platform using React, Vite, Tailwind CSS, and Framer Motion. Integrated REST APIs, developed an admin dashboard, connected payment dashboards like razorpay and also ensured a seamless UX/UI.",
+    technologies: ["React", "JavaScript", "Node.js", "Express.js", "MongoDB" , "Tailwind CSS"],
+    type: "internship",
+    logo: "/sw-logo.jpg",
+    link: "",
   },
   {
     id: 3,
-    title: "Software Engineer Intern",
-    company: "Google",
-    location: "Mountain View, CA",
+    title: "Student Researcher",
+    company: "Creative Interfaces Lab, IIIT-Delhi",
+    location: "New Delhi, India",
     period: "2019 - 2020",
-    description: "Worked on internal tools and infrastructure projects. Gained experience with large-scale systems and Google's development practices.",
-    technologies: ["Java", "Python", "Google Cloud", "BigQuery", "Kubernetes"],
-    achievements: [
-      "Contributed to internal tool used by 1000+ engineers",
-      "Improved data processing pipeline efficiency by 25%",
-      "Received 'Outstanding Intern' recognition",
-      "Participated in Google's hackathon winning 2nd place"
-    ],
-    type: "internship",
-    highlights: ["Large-Scale Systems", "Data Processing", "Cloud Infrastructure", "Innovation"]
-  }
+    description:
+      "Contributed to AR/VR Research & Development leading to co-authoring a paper, published and presented at IEEE 2024 (A*) in Orlando, Florida, USA.",
+    technologies: [ "Machine Learning" , "Unity3D", "C#", "AR/VR", "Research"],
+    type: "full-time",
+    logo: "/ci-lab-logo.png",
+    link: "https://cilab.iiitd.edu.in/",
+  },
 ]
 
 export function ExperienceSection() {
-  return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
-          Professional Experience
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400">
-          My journey through the tech industry
-        </p>
-      </div>
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
 
-      <div className="space-y-8">
-        {experienceData.map((experience, index) => (
-          <div 
-            key={experience.id} 
-            className="group relative"
-          >
-            {/* Timeline connector */}
-            {index < experienceData.length - 1 && (
-              <div className="absolute left-6 top-16 w-0.5 h-8 bg-gradient-to-b from-purple-500 to-blue-500 opacity-60" />
-            )}
-            
-            <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <CardHeader className="relative">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                      {experience.company.charAt(0)}
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const img = e.currentTarget
+    const fallback = img.nextElementSibling as HTMLElement
+    if (fallback) {
+      img.style.display = "none"
+      fallback.style.display = "block"
+    }
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="py-8"
+    >
+      <div className="max-w-3xl">
+        {/* Experience Badge */}
+        <div className="flex items-center justify-start mb-3">
+          <Badge variant="outline" className="text-black dark:text-white">
+            <span className="text-black dark:text-white text-sm">Experience</span>
+          </Badge>
+        </div>
+
+        {/* Experience Items */}
+        <div className="space-y-4">
+          {experienceData.map((exp) => (
+            <motion.div
+              key={exp.id}
+              className="group cursor-pointer"
+              onMouseEnter={() => setHoveredId(exp.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => exp.link && window.open(exp.link, "_blank")}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="flex items-start justify-between p-4 rounded-lg transition-all duration-200">
+                <div className="flex items-start space-x-4 flex-grow">
+                  {/* Company Logo */}
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center">
+                      <img
+                        src={exp.logo || "/placeholder.svg"}
+                        alt={`${exp.company} logo`}
+                        className="w-10 h-10 object-contain"
+                        onError={handleImageError}
+                      />
+                      <div className="w-8 h-8 text-gray-400 dark:text-gray-500 hidden flex items-center justify-center text-xl">
+                        {exp.company.charAt(0)}
+                      </div>
                     </div>
-                    <div>
-                      <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
-                        {experience.title}
-                      </CardTitle>
-                      <p className="text-lg font-semibold text-purple-600 dark:text-purple-400">
-                        {experience.company}
-                      </p>
+                  </div>
+
+                  {/* Experience Details */}
+                  <div className="flex-grow min-w-0">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex-grow">
+                        <h3 className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-[#6f4571] dark:group-hover:text-[#bef9f9] transition-colors duration-200">
+                          {exp.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">{exp.company}</p>
+                      </div>
+
+                      {/* Period and Type */}
+                      <div className="flex flex-col items-end gap-1 ml-4">
+                        <span className="text-gray-500 dark:text-gray-400 text-xs font-medium">{exp.period}</span>
+                        <Badge variant="default" className="text-xs h-5 px-2 text-white dark:text-gray-900">
+                          {exp.type}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    {/* Location */}
+                    <div className="flex items-center gap-1 mb-2">
+                      <MapPin className="w-3 h-3 text-gray-400" />
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{exp.location}</span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">{exp.description}</p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1">
+                      {exp.technologies.slice(0, 5).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {exp.technologies.length > 5 && (
+                        <span className="text-xs px-2 py-1 text-gray-500 dark:text-gray-500">
+                          +{exp.technologies.length - 5} more
+                        </span>
+                      )}
                     </div>
                   </div>
-                  
-                  <div className="flex flex-col items-end gap-2">
-                    <Badge 
-                      variant={experience.type === "full-time" ? "default" : experience.type === "contract" ? "secondary" : "outline"}
-                      className="text-xs"
-                    >
-                      {experience.type}
-                    </Badge>
-                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <Calendar className="h-4 w-4" />
-                      <span>{experience.period}</span>
-                    </div>
-                  </div>
                 </div>
-              </CardHeader>
-              
-              <CardContent className="relative space-y-6">
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <MapPin className="h-4 w-4" />
-                  <span>{experience.location}</span>
-                </div>
-                
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {experience.description}
-                </p>
-                
-                {/* Highlights */}
-                <div className="space-y-3">
-                  <h4 className="font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-                    <Star className="h-4 w-4 text-yellow-500" />
-                    Key Highlights
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {experience.highlights.map((highlight, idx) => (
-                      <Badge key={idx} variant="secondary" className="text-xs bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
-                        {highlight}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Technologies */}
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-900 dark:text-white">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {experience.technologies.map((tech, idx) => (
-                      <Badge key={idx} variant="outline" className="text-xs border-blue-200 text-blue-700 dark:border-blue-700 dark:text-blue-300">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Achievements */}
-                <div className="space-y-3">
-                  <h4 className="font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-                    <Award className="h-4 w-4 text-yellow-500" />
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2">
-                    {experience.achievements.map((achievement, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-3 group/item">
-                        <ArrowRight className="h-4 w-4 text-purple-500 mt-0.5 group-hover/item:translate-x-1 transition-transform duration-200" />
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
+
+                {/* Animated Arrow */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{
+                    opacity: hoveredId === exp.id ? 1 : 0,
+                    x: hoveredId === exp.id ? 0 : -10,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="text-gray-400 dark:text-gray-500 ml-2 mt-4"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   )
-} 
+}
