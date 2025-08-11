@@ -36,7 +36,7 @@ export function SkillsSection() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.2 }}
       className="py-8"
     >
       <div className="max-w-3xl">

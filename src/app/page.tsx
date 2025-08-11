@@ -66,7 +66,7 @@ export default function Home() {
     <div className="min-h-screen bg-white dark:bg-black">
       <Navbar />
 
-      <main className="container mx-auto px-4 py-8 pb-24 pt-24">
+      <main className="container mx-auto px-4 py-4  pt-24">
         <div className="max-w-3xl mx-auto space-y-6">
           {/* Hero Section */}
           <section className="py-3">
@@ -102,7 +102,7 @@ export default function Home() {
                   </div>
                   <Button
                     size="lg"
-                    className="bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black border-0 text-xs font-medium px-4 h-7 mt-3"
+                    className="bg-black dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-black border-0 text-xs font-medium px-4 h-7 mt-3"
                   >
                    <Download className="h-5 w-5 mr-1" />
                    Resume
@@ -154,8 +154,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700 py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-black dark:text-white">
-            © 2025 Yaksh Patel. Built with Next.js 15, Tailwind CSS, and shadcn/ui.
+          <p className="text-gray-600 dark:text-white">
+            © 2025 Yaksh Patel. Built with 💌 Next.js 15, Tailwind CSS, and shadcn/ui.
           </p>
         </div>
       </footer>

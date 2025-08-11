@@ -29,7 +29,7 @@ const experienceData: Experience[] = [
     period: "June 2025 - July 2025",
     description:
       "Converted Figma UI/UX mockups into a pixel-perfect, responsive React application. Implemented lazy loading, image compression, and icon optimization to boost performance by 40%",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "PostgreSQL"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", ""],
     type: "internship",
     logo: "/deckovizlogo.png",
     link: "https://deckoviz.com",
@@ -52,7 +52,7 @@ const experienceData: Experience[] = [
     title: "Student Researcher",
     company: "Creative Interfaces Lab, IIIT-Delhi",
     location: "New Delhi, India",
-    period: "2019 - 2020",
+    period: "October 2023 - April 2024",
     description:
       "Contributed to AR/VR Research & Development leading to co-authoring a paper, published and presented at IEEE 2024 (A*) in Orlando, Florida, USA.",
     technologies: [ "Machine Learning" , "Unity3D", "C#", "AR/VR", "Research"],

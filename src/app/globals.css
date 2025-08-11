@@ -3,11 +3,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Debug: Check if fonts are loading */
+body::before {
+  content: "DM Sans: " var(--font-dm-sans) " | Fira Code: " var(--font-fira-code);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 5px;
+  z-index: 9999;
+  font-size: 12px;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-fira-code);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -118,6 +131,15 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-dm-sans), system-ui, sans-serif !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: var(--font-dm-sans), system-ui, sans-serif !important;
+  }
+  
+  code, pre, .font-mono {
+    font-family: var(--font-fira-code), 'Courier New', monospace !important;
   }
 }
 
@@ -128,5 +150,13 @@
   
   .scroll-smooth {
     scroll-behavior: smooth;
+  }
+  
+  .font-sans {
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+  }
+  
+  .font-mono {
+    font-family: var(--font-fira-code), 'Courier New', monospace;
   }
 }
