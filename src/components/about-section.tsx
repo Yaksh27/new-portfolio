@@ -19,7 +19,7 @@ export function AboutSection() {
           </Badge>
         </div>
         <p className="text-gray-700 dark:text-white text-base leading-relaxed">
-          I'm a passionate software developer with expertise in modern web technologies. I love building scalable applications and solving complex problems. With a strong foundation in both frontend and backend development, I aim to create seamless user experiences and robust server-side solutions. My approach combines technical excellence with creative problem-solving, ensuring that every project I work on delivers both functionality and elegance.
+        I'm a software developer who genuinely loves what I do – building apps that actually work well and solving tricky problems that keep me up at night (in a good way). I work across the full stack, from making interfaces that don't frustrate users to backend systems that don't crash when things get busy. At the end of the day, I just want to build stuff that people find useful and that I can be proud of.
         </p>
       </div>
     </motion.div>

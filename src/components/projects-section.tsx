@@ -118,7 +118,7 @@ export function ProjectsSection() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                     {project.title}
                   </h3>
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                   {/* Action Buttons */}
                   <div className="flex gap-3">
                     {project.githubUrl && (
-                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900">
+                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-700 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
                           Code
@@ -146,7 +146,7 @@ export function ProjectsSection() {
                       </Button>
                     )}
                     {project.liveUrl && (
-                      <Button size="sm" asChild className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600">
+                      <Button size="sm" asChild className="bg-blue-500 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600">
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           <Globe className="h-4 w-4 mr-2" />
                           Live

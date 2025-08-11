@@ -52,10 +52,12 @@ export function GitHubContributions() {
           <Badge variant="outline" className="text-black dark:text-white">
             <span className="text-black dark:text-white text-sm">GitHub Activity</span>
           </Badge>
+       
         </div>
+        
         <div className="w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
           <iframe 
-            src="https://www.gitch.art/api/og/Yaksh27?color=41C481" 
+            src="https://www.gitch.art/api/og/Yaksh27?color=B8F5FF" 
             width="100%" 
             height="180" 
             frameBorder="0" 
