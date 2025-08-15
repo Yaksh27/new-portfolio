@@ -4,7 +4,7 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { useState, useEffect } from "react"
 import { HiMail } from "react-icons/hi"
 import { FaWhatsapp, FaRobot } from "react-icons/fa"
@@ -140,43 +140,44 @@ export function ContactMe() {
               onMouseEnter={() => setHoveredId(link.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => window.open(link.url, "_blank")}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
             >
               <div
-                className={`flex items-center justify-between p-5 transition-all duration-200 ease-out ${link.hoverBg} hover:shadow-sm ${
+                className={`flex items-center justify-between p-5 transition-all duration-150 ease-out ${link.hoverBg} hover:shadow-sm ${
                   index !== contactLinks.length - 1 ? "border-b border-gray-200 dark:border-gray-800" : ""
                 }`}
               >
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
                     <div
-                      className={`w-12 h-12 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center transition-all duration-200 group-hover:border-opacity-80`}
+                      className={`w-12 h-12 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center transition-all duration-150 group-hover:border-opacity-80 group-hover:scale-105`}
                     >
-                      <div className={`${link.color} transition-colors duration-200`}>{link.icon}</div>
+                      <div className={`${link.color} transition-colors duration-150`}>{link.icon}</div>
                     </div>
                   </div>
 
                   <div className="flex-grow">
                     <h3
-                      className={`text-base font-medium text-gray-900 dark:text-white transition-colors duration-200 ${link.hoverColor}`}
+                      className={`text-base font-medium text-gray-900 dark:text-white transition-colors duration-150 ${link.hoverColor}`}
                     >
                       {link.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-200">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-150">
                       {link.description}
                     </p>
                   </div>
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0.4 }}
+                  initial={{ opacity: 0.3, scale: 0.8 }}
                   animate={{
-                    opacity: hoveredId === link.id ? 1 : 0.4,
+                    opacity: hoveredId === link.id ? 1 : 0.3,
+                    scale: hoveredId === link.id ? 1 : 0.8,
                   }}
-                  transition={{ duration: 0.2 }}
-                  className={`text-gray-400 transition-all duration-200 group-hover:translate-x-1 ${link.color}`}
+                  transition={{ duration: 0.15 }}
+                  className={`absolute top-3 right-3 transition-all duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${link.color}`}
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ArrowUpRight className="w-4 h-4" />
                 </motion.div>
               </div>
             </motion.div>
@@ -190,8 +191,8 @@ export function ContactMe() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-6 text-center"
         >
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
-            <span className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
+          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>I usually respond within 24 hours,
             India: {currentTime}.
           </p>
         </motion.div>

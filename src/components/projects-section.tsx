@@ -55,10 +55,10 @@ const projects: Project[] = [
 ]
 
 const colors = [
-  "bg-gray-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
-  "bg-gray-100 text-green-800 dark:bg-green-900 dark:text-green-300", 
-  "bg-gray-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
-  "bg-gray-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300"
+  "bg-gray-100 text-blue-800 dark:bg-gray-300 dark:text-blue-600",
+  "bg-gray-100 text-green-800 dark:bg-gray-300 dark:text-green-600", 
+  "bg-gray-100 text-purple-800 dark:bg-gray-300 dark:text-purple-600",
+  "bg-gray-100 text-orange-800 dark:bg-gray-300 dark:text-orange-600"
 ]
 
 export function ProjectsSection() {
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                   {/* Action Buttons */}
                   <div className="flex gap-3">
                     {project.githubUrl && (
-                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-700 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900">
+                      <Button size="sm" asChild className="bg-gray-900 hover:bg-gray-700 text-white dark:bg-white dark:hover:bg-gray-300 dark:text-gray-900">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
                           Code
