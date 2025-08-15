@@ -28,10 +28,11 @@ export default function Navbar() {
 
   const navItems = [
     { icon: Home, label: "Home", id: "home" },
-    { icon: NotebookPen, label: "Blog", id: "blog" },
+    { icon: FileText, label: "Resume", id: "resume" },
     { icon: Github, label: "GitHub", id: "github" },
     { icon: Linkedin, label: "LinkedIn", id: "linkedin" },
-    { icon: FileText, label: "Resume", id: "resume" },
+   
+    { icon: NotebookPen, label: "Blog", id: "blog" },
   ]
 
   const themeItem = {
