@@ -128,8 +128,8 @@ export function ContactMe() {
 
         {/* Contact Description */}
         <p className="text-gray-700 dark:text-gray-400 text-sm leading-relaxed mb-6">
-          I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology
-          and coding. Feel free to reach out!
+          I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about technology
+          and coding. Feel free to reach out :)
         </p>
 
         <div className="bg-white/50 dark:bg-gray-900/30 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">

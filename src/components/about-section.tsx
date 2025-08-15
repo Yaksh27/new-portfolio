@@ -19,7 +19,7 @@ export function AboutSection() {
           </Badge>
         </div>
         <p className="text-gray-700 dark:text-white text-base leading-relaxed">
-        I'm a software developer who genuinely loves what I do – building apps that actually work well and solving tricky problems that keep me up at night (in a good way). I work across the full stack, from making interfaces that don't frustrate users to backend systems that don't crash when things get busy. At the end of the day, I just want to build stuff that people find useful and that I can be proud of.
+        I&apos;m a software developer who genuinely loves what I do – building apps that actually work well and solving tricky problems that keep me up at night (in a good way). I work across the full stack, from making interfaces that don&apos;t frustrate users to backend systems that don&apos;t crash when things get busy. At the end of the day, I just want to build stuff that people find useful and that I can be proud of.
         </p>
       </div>
     </motion.div>

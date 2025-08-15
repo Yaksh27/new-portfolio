@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
-                  Hey there, I'm <br />
+                  Hey there, I&apos;m <br />
                   <span className="text-amber-900 dark:text-[#a39077] mt-4">Yaksh Patel.</span>
                 </h1>
                                  <div className="text-xl md:text-2xl text-black dark:text-white mb-3 mt-6 h-8">
