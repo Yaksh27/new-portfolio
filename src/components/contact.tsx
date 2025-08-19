@@ -61,7 +61,7 @@ export function ContactMe() {
     {
       id: 2,
       name: "WhatsApp",
-      url: "https://wa.me/your-number",
+      url: "https://wa.me/+917779020367",
       icon: <FaWhatsapp className="h-6 w-6" />,
       description: "Drop a hi on WhatsApp 👋🏼",
       color: "text-green-500",

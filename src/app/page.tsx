@@ -101,12 +101,19 @@ export default function Home() {
                     </Avatar>
                   </div>
                   <Button
+                    asChild
                     size="lg"
                     className="bg-black dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-black border-0 text-xs font-medium px-4 h-7 mt-3"
                   >
-                   <Download className="h-5 w-5 mr-1" />
-                   Resume
-                 </Button>
+                    <a
+                      href="https://drive.google.com/uc?export=download&id=1XTTXtUlQXx3jeYNBi9VEvBwq9GZmLyx8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="h-5 w-5 mr-1" />
+                      Resume
+                    </a>
+                  </Button>
               </div>
 
 
