@@ -1,30 +1,28 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Sun, Moon, Home, FileText, Github, Linkedin, User, Newspaper, NotebookPen } from "lucide-react"
 
 export default function Navbar() {
-  const [theme, setTheme] = useState("light")
+  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    // Default to light theme, don't check system preference
-    setTheme("light")
-  }, [])
-
-  // Apply theme to document
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.remove('light', 'dark')
-      document.documentElement.classList.add(theme)
+    // Ensure theme is set to light if not already set
+    if (!theme) {
+      setTheme("light")
     }
-  }, [theme])
+  }, [theme, setTheme])
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
+
+  // Ensure theme is always defined
+  const currentTheme = theme || "light"
 
   const navItems = [
     { icon: Home, label: "Home", id: "home" },
@@ -35,11 +33,7 @@ export default function Navbar() {
     { icon: NotebookPen, label: "Blog", id: "blog" },
   ]
 
-  const themeItem = {
-    icon: theme === "dark" ? Sun : Moon,
-    label: theme === "dark" ? "Light Mode" : "Dark Mode",
-    id: "theme",
-  }
+
 
   if (!mounted) {
     return (
@@ -90,13 +84,17 @@ export default function Navbar() {
             size="sm"
             className="rounded-full h-9 w-9 p-0 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110 transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white group relative"
             onClick={toggleTheme}
-            title={themeItem.label}
+            title={currentTheme === "dark" ? "Light Mode" : "Dark Mode"}
           >
-            <themeItem.icon className="h-4 w-4 transition-all duration-300 group-hover:rotate-180" />
+            {currentTheme === "dark" ? (
+              <Sun className="h-4 w-4 transition-all duration-300 group-hover:rotate-180" />
+            ) : (
+              <Moon className="h-4 w-4 transition-all duration-300 group-hover:rotate-180" />
+            )}
             
             {/* Hover label tooltip */}
             <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black dark:bg-white text-white dark:text-black text-xs rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">
-              {themeItem.label}
+              {currentTheme === "dark" ? "Light Mode" : "Dark Mode"}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent border-t-black dark:border-t-white"></div>
             </div>
             

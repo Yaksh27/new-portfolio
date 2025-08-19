@@ -27,14 +27,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('portfolio-theme');
+                  if (!theme || theme === 'system') {
+                    localStorage.setItem('portfolio-theme', 'light');
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${dmSans.variable} ${firaCode.variable} antialiased font-sans`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
+          storageKey="portfolio-theme"
         >
           {children}
         </ThemeProvider>
